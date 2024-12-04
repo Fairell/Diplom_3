@@ -65,7 +65,7 @@ mvn clean test
 ```
 
 ## Запуск тестов Yandex
-
+* путь до исполняемого файла Yandex browser и chromedriver находятся в DriverFactory
 ```bash
 mvn clean test -Dbrowser=yandex
 ```
