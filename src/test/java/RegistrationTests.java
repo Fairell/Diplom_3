@@ -8,6 +8,7 @@ import pageobjects.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertTrue;
+import static pageobjects.Globals.REGISTER_PAGE;
 
 public class RegistrationTests {
 
@@ -21,11 +22,11 @@ public class RegistrationTests {
     @Before
     public void setup() {
         driver = DriverFactory.getDriver();
-        driver.get("https://stellarburgers.nomoreparties.site/register");
+        driver.get(REGISTER_PAGE);
     }
 
     @Test
-    public void shouldRegisterSuccessfullyWithValidData() throws InterruptedException {
+    public void shouldRegisterSuccessfullyWithValidData() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.fillUserInfo(testName, testEmail, testPassword);
         registrationPage.clickRegistrationButton();

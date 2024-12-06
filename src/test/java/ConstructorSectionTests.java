@@ -6,6 +6,7 @@ import pageobjects.HomePage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static pageobjects.Globals.BASE_URL;
 
 public class ConstructorSectionTests {
 
@@ -14,7 +15,7 @@ public class ConstructorSectionTests {
     @Test
     public void shouldNavigateToBunsSection() {
         driver = DriverFactory.getDriver();
-        driver.get("https://stellarburgers.nomoreparties.site");
+        driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
         homePage.clickSauceTab();
         homePage.clickBunTab();
@@ -26,7 +27,7 @@ public class ConstructorSectionTests {
     @Test
     public void shouldNavigateToSaucesSection() {
         driver = DriverFactory.getDriver();
-        driver.get("https://stellarburgers.nomoreparties.site");
+        driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
         homePage.clickSauceTab();
         String element = homePage.getCurrentTab();
@@ -37,7 +38,7 @@ public class ConstructorSectionTests {
     @Test
     public void shouldNavigateToFillingsSection() {
         driver = DriverFactory.getDriver();
-        driver.get("https://stellarburgers.nomoreparties.site");
+        driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
         homePage.clickFillingTab();
         String element = homePage.getCurrentTab();

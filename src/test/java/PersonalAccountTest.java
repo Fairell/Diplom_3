@@ -12,6 +12,7 @@ import pageobjects.*;
 import java.time.Duration;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static pageobjects.Globals.BASE_URL;
 
 public class PersonalAccountTest {
 
@@ -25,7 +26,7 @@ public class PersonalAccountTest {
     @Before
     public void setup() {
         driver = DriverFactory.getDriver();
-        driver.get("https://stellarburgers.nomoreparties.site");
+        driver.get(BASE_URL);
         userSteps.createUser(testEmail, testPassword, testName);
         HomePage homePage = new HomePage(driver);
         homePage.clickLoginButton();

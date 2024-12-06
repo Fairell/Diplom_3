@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.*;
 
 import static org.junit.Assert.assertTrue;
+import static pageobjects.Globals.*;
 
 public class LoginTests {
 
@@ -23,7 +24,7 @@ public class LoginTests {
 
     @Test
     public void shouldLoginSuccessfullyFromLoginButton() {
-        driver.get("https://stellarburgers.nomoreparties.site");
+        driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
         homePage.clickLoginButton();
         LoginPage loginPage = new LoginPage(driver);
@@ -34,7 +35,7 @@ public class LoginTests {
 
     @Test
     public void shouldLoginSuccessfullyFromProfileButton() {
-        driver.get("https://stellarburgers.nomoreparties.site");
+        driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
         homePage.clickPersonalAccountButton();
         LoginPage loginPage = new LoginPage(driver);
@@ -45,7 +46,7 @@ public class LoginTests {
 
     @Test
     public void shouldLoginSuccessfullyFromRegistrationFormButton() {
-        driver.get("https://stellarburgers.nomoreparties.site/register");
+        driver.get(REGISTER_PAGE);
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.clickLogInButton();
         LoginPage loginPage = new LoginPage(driver);
@@ -57,7 +58,7 @@ public class LoginTests {
 
     @Test
     public void shouldLoginSuccessfullyFromPasswordRecoveryFormButton() {
-        driver.get("https://stellarburgers.nomoreparties.site/forgot-password");
+        driver.get(FORGOT_PASSWORD_PAGE);
         PasswordRecoveryPage passwordRecoveryPage = new PasswordRecoveryPage(driver);
         passwordRecoveryPage.clickLogInButton();
         LoginPage loginPage = new LoginPage(driver);

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.*;
 
 import static org.junit.Assert.assertTrue;
+import static pageobjects.Globals.BASE_URL;
 
 public class LogoutTests {
 
@@ -19,7 +20,7 @@ public class LogoutTests {
     @Before
     public void setup() {
         driver = DriverFactory.getDriver();
-        driver.get("https://stellarburgers.nomoreparties.site");
+        driver.get(BASE_URL);
         userSteps.createUser(testEmail, testPassword, testName);
         HomePage homePage = new HomePage(driver);
         homePage.clickLoginButton();

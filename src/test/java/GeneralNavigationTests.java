@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.*;
 
 import static org.hamcrest.CoreMatchers.containsString;
+import static pageobjects.Globals.BASE_URL;
 
 public class GeneralNavigationTests {
 
@@ -20,7 +21,7 @@ public class GeneralNavigationTests {
     @Before
     public void setup() {
         driver = DriverFactory.getDriver();
-        driver.get("https://stellarburgers.nomoreparties.site");
+        driver.get(BASE_URL);
         userSteps.createUser(testEmail, testPassword, testName);
         HomePage homePage = new HomePage(driver);
         homePage.clickLoginButton();
