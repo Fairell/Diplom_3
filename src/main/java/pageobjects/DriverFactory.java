@@ -20,12 +20,21 @@ public class DriverFactory {
                 case "yandex":
                     ChromeOptions yandexOptions = new ChromeOptions();
 
-                    // Указываем путь до исполняемого файла Yandex browser
-                    yandexOptions.setBinary("C:\\Users\\Arseniy\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe");
-                    yandexOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
+                    // Получаем путь к исполняемому файлу Yandex Browser из переменной среды
+                    String yandexBrowserPath = System.getenv("YANDEX_BROWSER_PATH");
+                    if (yandexBrowserPath == null || yandexBrowserPath.isEmpty()) {
+                        throw new IllegalStateException("Environment variable YANDEX_BROWSER_PATH is not set");
+                    }
+                    yandexOptions.setBinary(yandexBrowserPath);
 
-                    // Указываем путь до chromedriver версии 128, совместимой с Yandex Browser
-                    System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+                    // Получаем путь к chromedriver из переменной среды
+                    String chromeDriverPath = System.getenv("CHROME_DRIVER_PATH");
+                    if (chromeDriverPath == null || chromeDriverPath.isEmpty()) {
+                        throw new IllegalStateException("Environment variable CHROME_DRIVER_PATH is not set");
+                    }
+                    System.setProperty("webdriver.chrome.driver", chromeDriverPath);
+
+                    yandexOptions.addArguments("--no-sandbox", "--disable-dev-shm-usage");
                     return new ChromeDriver(yandexOptions);
                 default:
                     throw new IllegalArgumentException("Unsupported browser: " + browser);
