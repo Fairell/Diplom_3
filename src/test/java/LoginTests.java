@@ -81,7 +81,7 @@ public class LoginTests {
                 .extract().body().path("accessToken");
         if (token != null) {
             userSteps.deleteUser(token);
-            driver.quit();
         }
+        driver.quit();
     }
 }

@@ -60,8 +60,8 @@ public class GeneralNavigationTests {
                 .extract().body().path("accessToken");
         if (token != null) {
             userSteps.deleteUser(token);
-            driver.quit();
         }
+        driver.quit();
     }
 
 }
