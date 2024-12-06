@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ public class ConstructorSectionTests {
     private static WebDriver driver;
 
     @Test
+    @DisplayName("Переход к разделу 'Булки'")
     public void shouldNavigateToBunsSection() {
         driver = DriverFactory.getDriver();
         driver.get(BASE_URL);
@@ -25,6 +27,7 @@ public class ConstructorSectionTests {
     }
 
     @Test
+    @DisplayName("Переход к разделу 'Соусы'")
     public void shouldNavigateToSaucesSection() {
         driver = DriverFactory.getDriver();
         driver.get(BASE_URL);
@@ -36,6 +39,7 @@ public class ConstructorSectionTests {
     }
 
     @Test
+    @DisplayName("Переход к разделу 'Начинки'")
     public void shouldNavigateToFillingsSection() {
         driver = DriverFactory.getDriver();
         driver.get(BASE_URL);

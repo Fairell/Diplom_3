@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -24,6 +25,7 @@ public class LoginTests {
     }
 
     @Test
+    @DisplayName("Авторизация по кнопке 'Войти в аккаунт' на главной странице")
     public void shouldLoginSuccessfullyFromLoginButton() {
         driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
@@ -35,6 +37,7 @@ public class LoginTests {
     }
 
     @Test
+    @DisplayName("Авторизация по кнопке 'Войти' из личного кабинета")
     public void shouldLoginSuccessfullyFromProfileButton() {
         driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
@@ -46,6 +49,7 @@ public class LoginTests {
     }
 
     @Test
+    @DisplayName("Авторизация по кнопке 'Войти' с формы регистрации")
     public void shouldLoginSuccessfullyFromRegistrationFormButton() {
         driver.get(REGISTER_PAGE);
         RegistrationPage registrationPage = new RegistrationPage(driver);
@@ -58,6 +62,7 @@ public class LoginTests {
     }
 
     @Test
+    @DisplayName("Авторизация по кнопке 'Войти' с формы восстановления пароля")
     public void shouldLoginSuccessfullyFromPasswordRecoveryFormButton() {
         driver.get(FORGOT_PASSWORD_PAGE);
         PasswordRecoveryPage passwordRecoveryPage = new PasswordRecoveryPage(driver);

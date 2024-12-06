@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -32,6 +33,7 @@ public class LogoutTests {
     }
 
     @Test
+    @DisplayName("Выход из профиля по кнопке 'Выйти' в личном кабинете")
     public void shouldLogoutSuccessfullyFromPersonalAccount() {
         PersonalAccountPage personalAccountPage = new PersonalAccountPage(driver);
         personalAccountPage.clickLogOutButton();

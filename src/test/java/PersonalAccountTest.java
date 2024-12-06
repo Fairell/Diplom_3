@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
@@ -37,6 +38,7 @@ public class PersonalAccountTest {
     }
 
     @Test
+    @DisplayName("Переход по клику на 'Личный кабинет'")
     public void toPersonalAccountTransferTest() {
         HomePage homePage = new HomePage(driver);
         homePage.clickPersonalAccountButton();

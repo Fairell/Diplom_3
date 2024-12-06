@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
@@ -33,6 +34,7 @@ public class GeneralNavigationTests {
     }
 
     @Test
+    @DisplayName("Переход в 'Конструктор' из личного кабинета")
     public void shouldNavigateToConstructorFromPersonalAccount() {
         PersonalAccountPage personalAccountPage = new PersonalAccountPage(driver);
         personalAccountPage.clickConstructorButton();
@@ -42,6 +44,7 @@ public class GeneralNavigationTests {
     }
 
     @Test
+    @DisplayName("Переход в 'Конструктор' по логотипу Stellar Burgers")
     public void shouldNavigateToConstructorUsingLogoButton() {
         PersonalAccountPage personalAccountPage = new PersonalAccountPage(driver);
         personalAccountPage.clickLogoButton();

@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
@@ -26,6 +27,7 @@ public class RegistrationTests {
     }
 
     @Test
+    @DisplayName("Успешная регистрация с валидными данными")
     public void shouldRegisterSuccessfullyWithValidData() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.fillUserInfo(testName, testEmail, testPassword);
@@ -41,6 +43,7 @@ public class RegistrationTests {
     }
 
     @Test
+    @DisplayName("Ошибка для некорректного пароля при регистрации")
     public void shouldShowErrorForInvalidPassword() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.fillUserInfo(testName, testEmail, testIncorrectPassword);
