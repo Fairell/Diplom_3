@@ -50,7 +50,8 @@ public class RegistrationTests {
 
     @After
     public void tearDown() {
-        String token = userSteps.loginUser(testEmail, testPassword)
+        LoginRequest loginRequest = new LoginRequest(testEmail, testPassword);
+        String token = userSteps.loginUser(loginRequest)
                 .extract().body().path("accessToken");
         if (token != null) {
             userSteps.deleteUser(token);

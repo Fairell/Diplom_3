@@ -18,7 +18,8 @@ public class LoginTests {
 
     @Before
     public void setup() {
-        userSteps.createUser(testEmail, testPassword, testName);
+        UserRequest userRequest = new UserRequest(testEmail, testPassword, testName);
+        userSteps.createUser(userRequest);
         driver = DriverFactory.getDriver();
     }
 
@@ -70,7 +71,8 @@ public class LoginTests {
 
     @After
     public void tearDown() {
-        String token = userSteps.loginUser(testEmail, testPassword)
+        LoginRequest loginRequest = new LoginRequest(testEmail, testPassword);
+        String token = userSteps.loginUser(loginRequest)
                 .extract().body().path("accessToken");
         if (token != null) {
             userSteps.deleteUser(token);

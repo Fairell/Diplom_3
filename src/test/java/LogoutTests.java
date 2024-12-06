@@ -21,7 +21,8 @@ public class LogoutTests {
     public void setup() {
         driver = DriverFactory.getDriver();
         driver.get(BASE_URL);
-        userSteps.createUser(testEmail, testPassword, testName);
+        UserRequest userRequest = new UserRequest(testEmail, testPassword, testName);
+        userSteps.createUser(userRequest);
         HomePage homePage = new HomePage(driver);
         homePage.clickLoginButton();
         LoginPage loginPage = new LoginPage(driver);
@@ -41,7 +42,8 @@ public class LogoutTests {
 
     @After
     public void tearDown() {
-        String token = userSteps.loginUser(testEmail, testPassword)
+        LoginRequest loginRequest = new LoginRequest(testEmail, testPassword);
+        String token = userSteps.loginUser(loginRequest)
                 .extract().body().path("accessToken");
         if (token != null) {
             userSteps.deleteUser(token);

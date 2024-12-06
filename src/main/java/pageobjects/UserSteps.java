@@ -10,36 +10,33 @@ import static pageobjects.Globals.*;
 public class UserSteps {
 
     @Step
-    public ValidatableResponse createUser(String email, String password, String name) {
-        return given().log().ifValidationFails()
+    public ValidatableResponse createUser(UserRequest userRequest) {
+        return given()
+                .log().ifValidationFails()
                 .contentType(ContentType.JSON)
                 .baseUri(BASE_URL)
-                .body("{\n" +
-                        "    \"email\": \"" + email + "\",\n" +
-                        "    \"password\": \"" + password + "\",\n" +
-                        "    \"name\": \"" + name + "\"\n" +
-                        "}")
+                .body(userRequest)  // Передаем объект вместо строки
                 .when()
                 .post(REGISTER_CLIENT)
                 .then();
     }
 
     @Step
-    public ValidatableResponse loginUser(String email, String password) {
+    public ValidatableResponse loginUser(LoginRequest loginRequest) {
         return given()
+                .log().ifValidationFails()
                 .contentType(ContentType.JSON)
                 .baseUri(BASE_URL)
-                .body("{\n" +
-                        "    \"email\": \"" + email + "\",\n" +
-                        "    \"password\": \"" + password + "\"\n" +
-                        "}")
+                .body(loginRequest)  // Передаем объект вместо строки
                 .when()
-                .post(AUTHORIZATION_CLIENT).then();
+                .post(AUTHORIZATION_CLIENT)
+                .then();
     }
 
     @Step
     public ValidatableResponse deleteUser(String accessToken) {
         return given()
+                .log().ifValidationFails()
                 .header("Authorization", accessToken)
                 .baseUri(BASE_URL)
                 .when()
