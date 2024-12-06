@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 import java.time.Duration;
 
 import static org.openqa.selenium.By.xpath;
@@ -14,6 +13,9 @@ import static org.openqa.selenium.By.xpath;
 public class HomePage {
 
     private final WebDriver driver;
+    private final WebDriverWait wait;
+
+    // Локаторы
     private final By createOrderButtonLocator = xpath("//button[text()='Оформить заказ']");
     private final By loginButtonLocator = xpath("//button[text()='Войти в аккаунт']");
     private final By personalAccountButtonLocator = xpath("//p[text()='Личный Кабинет']");
@@ -23,86 +25,49 @@ public class HomePage {
     private final By sauceTabLocator = xpath("//span[text()='Соусы']");
     private final By fillingTabLocator = xpath("//span[text()='Начинки']");
 
+    // Конструктор
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5)); // Устанавливаем стандартное время ожидания
     }
 
     public boolean createOrderButtonIsEnabled() {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfElementLocated(createOrderButtonLocator));
-        WebElement createOrderButton = driver.findElement(createOrderButtonLocator);
+        WebElement createOrderButton = wait.until(ExpectedConditions.visibilityOfElementLocated(createOrderButtonLocator));
         return createOrderButton.isDisplayed();
     }
 
     public void clickLoginButton() {
-        try {
-            Thread.sleep(3000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        WebElement loginButton = driver.findElement(loginButtonLocator);
+        WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(loginButtonLocator));
         loginButton.click();
     }
 
     public void clickPersonalAccountButton() {
-        try {
-            Thread.sleep(3000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        WebElement personalAccountButton = driver.findElement(personalAccountButtonLocator);
+        WebElement personalAccountButton = wait.until(ExpectedConditions.elementToBeClickable(personalAccountButtonLocator));
         personalAccountButton.click();
     }
 
     public void clickBunTab() {
-        try {
-            Thread.sleep(3000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        WebElement bunTab = driver.findElement(bunTabLocator);
+        WebElement bunTab = wait.until(ExpectedConditions.elementToBeClickable(bunTabLocator));
         bunTab.click();
     }
 
-    public void clickSauceTab(){
-        try {
-            Thread.sleep(3000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        WebElement sauceTab = driver.findElement(sauceTabLocator);
+    public void clickSauceTab() {
+        WebElement sauceTab = wait.until(ExpectedConditions.elementToBeClickable(sauceTabLocator));
         sauceTab.click();
     }
 
-    public void clickFillingTab(){
-        try {
-            Thread.sleep(3000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        WebElement fillingTab = driver.findElement(fillingTabLocator);
+    public void clickFillingTab() {
+        WebElement fillingTab = wait.until(ExpectedConditions.elementToBeClickable(fillingTabLocator));
         fillingTab.click();
     }
 
     public String getCurrentTab() {
-        try {
-            Thread.sleep(3000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return driver.findElement(activeTabLocator).getText();
+        WebElement activeTab = wait.until(ExpectedConditions.visibilityOfElementLocated(activeTabLocator));
+        return activeTab.getText();
     }
 
     public String constructorText() {
-        try {
-            Thread.sleep(3000L);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        return driver.findElement(constructorTextLocator).getText();
+        WebElement constructorText = wait.until(ExpectedConditions.visibilityOfElementLocated(constructorTextLocator));
+        return constructorText.getText();
     }
-
 }
-
-
-
