@@ -9,7 +9,7 @@ import static pageobjects.Globals.*;
 
 public class UserSteps {
 
-    @Step
+    @Step("Создание пользователя")
     public ValidatableResponse createUser(UserRequest userRequest) {
         return given()
                 .log().ifValidationFails()
@@ -21,7 +21,7 @@ public class UserSteps {
                 .then();
     }
 
-    @Step
+    @Step("Авторизация пользователя")
     public ValidatableResponse loginUser(LoginRequest loginRequest) {
         return given()
                 .log().ifValidationFails()
@@ -33,7 +33,7 @@ public class UserSteps {
                 .then();
     }
 
-    @Step
+    @Step("Удаление пользователя")
     public ValidatableResponse deleteUser(String accessToken) {
         return given()
                 .log().ifValidationFails()
