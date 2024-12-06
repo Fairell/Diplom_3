@@ -36,7 +36,7 @@
 - [Технологии](#Технологии)
 - [Запуск тестов Chrome](#Запуск-тестов-Chrome)
 - [Запуск тестов Yandex](#Запуск-тестов-Yandex)
-- [Создание и просмотр отчёта Allure](#Создание-и-просмотр-отчёта-Allure)
+- [Просмотр отчёта Allure](#Просмотр-отчёта-Allure)
 
 ## Технологии
 
@@ -65,7 +65,7 @@ mvn clean test
 ```
 
 ## Запуск тестов Yandex
-* путь до исполняемого файла Yandex browser и chromedriver находятся в DriverFactory
+* путь до исполняемого файла Yandex browser и chromedriver указываем в переменных среды YANDEX_BROWSER_PATH и CHROME_DRIVER_PATH
 ```bash
 mvn clean test -Dbrowser=yandex
 ```
