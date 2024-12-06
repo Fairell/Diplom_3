@@ -5,26 +5,22 @@ import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
+import static pageobjects.Globals.*;
 
 public class UserSteps {
-
-    private static final String HOST = "https://stellarburgers.nomoreparties.site";
-    private static final String LOGIN = "/api/auth/login";
-    private static final String USER = "/api/auth/register";
-    private static final String DELETE = "/api/auth/user";
 
     @Step
     public ValidatableResponse createUser(String email, String password, String name) {
         return given().log().ifValidationFails()
                 .contentType(ContentType.JSON)
-                .baseUri(HOST)
+                .baseUri(BASE_URL)
                 .body("{\n" +
                         "    \"email\": \"" + email + "\",\n" +
                         "    \"password\": \"" + password + "\",\n" +
                         "    \"name\": \"" + name + "\"\n" +
                         "}")
                 .when()
-                .post(USER)
+                .post(REGISTER_CLIENT)
                 .then();
     }
 
@@ -32,22 +28,22 @@ public class UserSteps {
     public ValidatableResponse loginUser(String email, String password) {
         return given()
                 .contentType(ContentType.JSON)
-                .baseUri(HOST)
+                .baseUri(BASE_URL)
                 .body("{\n" +
                         "    \"email\": \"" + email + "\",\n" +
                         "    \"password\": \"" + password + "\"\n" +
                         "}")
                 .when()
-                .post(LOGIN).then();
+                .post(AUTHORIZATION_CLIENT).then();
     }
 
     @Step
     public ValidatableResponse deleteUser(String accessToken) {
         return given()
                 .header("Authorization", accessToken)
-                .baseUri(HOST)
+                .baseUri(BASE_URL)
                 .when()
-                .delete(DELETE)
+                .delete(ACTIONS_CLIENT)
                 .then();
     }
 }
